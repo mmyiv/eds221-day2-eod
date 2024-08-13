@@ -1,0 +1,17 @@
+---
+title: "WildDataPractice"
+author: "Mish"
+execute:
+  warning: false
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+# Attach Libraries
+library(tidyverse)
+library(here)
+library(janitor)
+```
+
