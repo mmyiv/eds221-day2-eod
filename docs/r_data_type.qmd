@@ -2,25 +2,63 @@
 title: "r_data_type"
 author: "mish"
 format: html
+editor_options: 
+  chunk_output_type: console
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
 ```{r}
-1 + 1
+# create a vector vec_1
+
+vec_1 <- c(2, 5, 9, 10, 8, 12, 1, 0)
+vec_1
+
+class(vec_1)
+
+typeof(vec_1)
+
+vec_1_e3 <- vec_1[3]
+vec_1_e3
+
+vec_1_e1 <- vec_1[1]
+vec_1_e1
+
+vec_1_e5to7 <- vec_1[5:7]
+vec_1_e5to7
+
+vec_1_char <- as.character(vec_1)
+vec_1_char
+class(vec_1_char)
 ```
 
-You can add options to executable code like this 
-
 ```{r}
-#| echo: false
-2 * 2
+# create a vector vec_2
+vec_2 <- c("town = Santa Barbara", " location = Rincon", "swell = south")
+vec_2
+
+class(vec_2)
+length(vec_2)
+vec_2_e2 <- vec_2[2]
+vec_2_e2
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+# create a data frame in R
+df_1 <- matrix(c("A", "otter", 12, 
+                 "B", "great white", 2,
+                 "C", "sea lion", 36,
+                 "D", "gray whale", 6), ncol = 3, nrow = 4, byrow = TRUE)
+df_1 <- data.frame(region = c("A", "B", "C", "D"),
+                   species = c("otter", "great white", "sea lion", "gray whale"),
+                   count = c(12, 2, 36, 6))
+df_1
+class(df_1)
+class(df_1$species)
+max_count <- max(df_1$count)
+```
+
+```{r}
+# Wild data
+Monitoring west slope cutthroat trout and pacific giant salamanders
+Species, length, weight in cm and lbs
+```
+

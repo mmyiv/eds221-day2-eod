@@ -15,3 +15,49 @@ library(here)
 library(janitor)
 ```
 
+```{r}
+# read data
+mack_verts <- read_csv(here::here("data","AS00601.csv"))
+view(mack_verts)
+```
+
+```{r}
+# lower snake case
+mack_verts <- mack_verts %>% clean_names()
+```
+
+```{r}
+# assess indv pieces of data
+mc_weight_5 <- mack_verts$weight[5]
+mc_weight_5
+
+mc_length_8_20 <- mack_verts$length1[8:20]
+mc_length_8_20
+
+mc_dates <- mack_verts$sampledate
+mc_dates
+```
+
+```{r}
+# salamander subset
+mc_salamders <- dplyr::filter(mack_verts, species == "DITE")
+mc_salamders
+
+ggplot(mc_salamders, aes(x = length1, y = weight, color = weight)) + geom_point() + theme_classic() +
+  labs(x = "snout-vent length (millimeters)",
+       y = "weight (grams)",
+       title = "Salamander Weight vs Length",
+       subtitle = "millimeters vs. grams",
+       caption = "Populations of West Slope cutthroat trout (Onchorhyncus clarki clarki) and Pacific Giant Salamanders, Dicamptodon tenebrosus in two standard reaches of Mack Creek in the H.J. Andrews Experimental Forest)")
+
+```
+
+```{r}
+# cutthroat plot
+mc_trout <- dplyr::filter(mack_verts, species == "ONCL")
+mc_trout
+
+ggplot(mc_trout, aes(x=length1, y=weight, color = reach)) + facet_wrap(~reach) + scale_color_manual(values = c("pink", "purple", "blue")) + geom_point() + theme_linedraw() + 
+  labs(x="length", y="weight", title = "Trout Length vs Weight")
+```
+
